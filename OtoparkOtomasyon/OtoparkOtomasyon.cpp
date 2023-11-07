@@ -16,22 +16,22 @@ void clearScreen() {
 }
 
 void displayWelcomeScreen() {
-    cout << "Hoş geldiniz!" << endl;
+    cout << "Hos geldiniz!" << endl;
     string username, password;
-    cout << "Kullanıcı Adı: ";
+    cout << "Kullanici Adi: ";
     cin >> username;
-    cout << "Şifre: ";
+    cout << "Sifre: ";
     cin >> password;
 
     if (username != admin_username || password != admin_password) {
-        cout << "Hatalı giriş. 3 defa hatalı giriş sonucu program kapanacaktır." << endl;
+        cout << "Hatali giris. 3 defa hatali giris sonucu program kapanacaktir." << endl;
         for (int i = 0; i < 3; i++) {
             Sleep(1000);
             clearScreen();
-            cout << "Hatalı giriş. " << 2 - i << " deneme hakkınız kaldı." << endl;
-            cout << "Kullanıcı Adı: ";
+            cout << "Hatali giris. " << 2 - i << " deneme hakkiniz kaldi." << endl;
+            cout << "Kullanici Adi: ";
             cin >> username;
-            cout << "Şifre: ";
+            cout << "Sifre: ";
             cin >> password;
 
             if (username == admin_username && password == admin_password) {
@@ -41,14 +41,14 @@ void displayWelcomeScreen() {
         }
 
         if (username != admin_username || password != admin_password) {
-            cout << "Çok fazla yanlış giriş yaptınız. Program kapanıyor." << endl;
+            cout << "Çok fazla yanlis giris yaptiniz. Program kapaniyor." << endl;
             Sleep(2000);
             return;
         }
     }
 
     clearScreen();
-    cout << "Hoş geldiniz, " << username << "!" << endl;
+    cout << "Hos geldiniz, " << username << "!" << endl;
 }
 
 void displayMenu() {
@@ -70,21 +70,21 @@ void listParkedCars() {
 
 void parkCar() {
     int floor, spot;
-    cout << "Kat numarasını girin (1-" << num_floors << "): ";
+    cout << "Kat numarasini girin (1-" << num_floors << "): ";
     cin >> floor;
 
     if (floor < 1 || floor > num_floors) {
-        cout << "Geçersiz kat numarası." << endl;
+        cout << "Gecersiz kat numarasi." << endl;
         return;
     }
 
     floor--;
 
-    cout << "Park yeri numarasını girin (1-" << num_parking_spots << "): ";
+    cout << "Park yeri numarasini girin (1-" << num_parking_spots << "): ";
     cin >> spot;
 
     if (spot < 1 || spot > num_parking_spots) {
-        cout << "Geçersiz park yeri numarası." << endl;
+        cout << "Gecersiz park yeri numarasi." << endl;
         return;
     }
 
@@ -95,7 +95,7 @@ void parkCar() {
         return;
     }
 
-    cout << "Aracın plakasını girin: ";
+    cout << "Aracin plakasini girin: ";
     string plate;
     cin >> plate;
 
@@ -105,33 +105,37 @@ void parkCar() {
     ctime_s(buffer, sizeof(buffer), &now);
 
     parking_matrix[floor][spot] = plate;
-    cout << "Aracınız " << floor + 1 << ". Kat, " << spot + 1 << ". Park yerine park edildi. Giriş zamanı: " << buffer;
+    cout << "Araciniz " << floor + 1 << ". Kat, " << spot + 1 << ". Park yerine park edildi. Giris zamani: " << buffer;
+
+    Sleep(3000); // 3 saniye bekler
+    system("cls"); // Ekranı temizler
 }
+
 
 void exitParking() {
     int floor, spot;
-    cout << "Kat numarasını girin (1-" << num_floors << "): ";
+    cout << "Kat numarasini girin (1-" << num_floors << "): ";
     cin >> floor;
 
     if (floor < 1 || floor > num_floors) {
-        cout << "Geçersiz kat numarası." << endl;
+        cout << "Gecersiz kat numarasi." << endl;
         return;
     }
 
     floor--;
 
-    cout << "Park yeri numarasını girin (1-" << num_parking_spots << "): ";
+    cout << "Park yeri numarasini girin (1-" << num_parking_spots << "): ";
     cin >> spot;
 
     if (spot < 1 || spot > num_parking_spots) {
-        cout << "Geçersiz park yeri numarası." << endl;
+        cout << "Gecersiz park yeri numarasi." << endl;
         return;
     }
 
     spot--;
 
     if (parking_matrix[floor][spot] == "") {
-        cout << "Bu park yeri boş." << endl;
+        cout << "Bu park yeri bos." << endl;
         return;
     }
 
@@ -143,7 +147,7 @@ void exitParking() {
     char buffer[26];
     ctime_s(buffer, sizeof(buffer), &now);
 
-    cout << "Araç " << floor + 1 << ". Kat, " << spot + 1 << ". Park yerinden çıktı. Çıkış zamanı: " << buffer;
+    cout << "Arac " << floor + 1 << ". Kat, " << spot + 1 << ". Park yerinden cikti. Cikis zamani: " << buffer;
 }
 
 int main() {
@@ -151,7 +155,7 @@ int main() {
     while (true) {
         displayMenu();
         int choice;
-        cout << "Seçiminizi girin (1-4): ";
+        cout << "Seciminizi girin (1-4): ";
         cin >> choice;
 
         switch (choice) {
@@ -167,7 +171,7 @@ int main() {
         case 4:
             return 0;
         default:
-            cout << "Geçersiz seçenek. Lütfen 1-4 arasında bir seçenek girin." << endl;
+            cout << "Gecersiz secenek. Lütfen 1-4 arasinda bir secenek girin." << endl;
             break;
         }
     }
