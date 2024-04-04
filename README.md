@@ -1,1 +1,1 @@
-Unreal Engine 5 Essentials Bootcamp'i için açılmış bir repodur. Başlangıç seviyesi C++ derslerinin ödevleri için kullanıldı.
+It is a repo opened for Unreal Engine 5 Essentials Bootcamp. It was used for assignments in beginner C++ courses.
